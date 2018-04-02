@@ -4,7 +4,7 @@ import HW8Support as Support
 #PROBLEM ONE
 
 oldtrial = Cls.SetOfGames(id=1, prob_head=.5, n_games=1000)
-newtrial = Cls.SetOfGames(id=1, prob_head=0.45, n_games=1000)
+newtrial = Cls.SetOfGames(id=2, prob_head=0.45, n_games=1000)
 newsimulation = newtrial.simulation()
 oldsimulation = oldtrial.simulation()
 newearnings = newsimulation.get_ave_reward()*-1
@@ -24,5 +24,6 @@ fairsim = fair.simulation()
 weightedsim = weighted.simulation()
 
 print("Problem 2")
-Support.print_outcomes(fair, "With fair coin")
-
+#Support.print_outcomes(fair, "The coin is fair.")
+Support.print_outcomes(weighted, "The coin is weighted.")
+#Support.print_comparative_outcomes(fair, weighted)
