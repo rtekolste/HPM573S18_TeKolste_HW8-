@@ -10,13 +10,13 @@ def print_outcomes(multi_cohort, strategy_name):
 
     # mean and confidence interval text of patient survival time
     survival_mean_PI_text = Format.format_estimate_interval(
-        estimate=multi_cohort.get_mean_total_reward,
+        estimate=multi_cohort.get_mean_total_reward(),
         interval=multi_cohort.get_PI_total_reward(alpha=.05),
         deci=1)
 
     # print survival time statistics
     print(strategy_name)
-    print("  Estimate of mean survival time (years) and {:.{prec}%} prediction interval:".format(1 - P.ALPHA, prec=0),
+    print("  Estimate of mean survival time (years) and {:.{prec}%} prediction interval:".format(.95, prec=0),
           survival_mean_PI_text)
 
 
