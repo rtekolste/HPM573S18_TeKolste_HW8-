@@ -16,7 +16,7 @@ def print_outcomes(multi_cohort, strategy_name):
 
     # print survival time statistics
     print(strategy_name)
-    print("  Estimate of mean survival time (years) and {:.{prec}%} prediction interval:".format(.95, prec=0),
+    print("  Estimate of mean earnings and {:.{prec}%} prediction interval:".format(.95, prec=0),
           survival_mean_PI_text)
 
 
@@ -29,25 +29,25 @@ def print_comparative_outcomes(multi_cohort_odds1, multi_cohort_odds2):
     # increase in survival time
     increase = Stat.DifferenceStatIndp(
         name='Difference in Earnings',
-        x=multi_cohort_odds2.get_mean_total_reward(),
-        y_ref=multi_cohort_odds1.get_mean_total_reward()
+        x=multi_cohort_odds2.get_all_total_rewards(),
+        y_ref=multi_cohort_odds1.get_all_total_rewards()
     )
     # estimate and prediction interval
     estimate_CI = Format.format_estimate_interval(
         estimate=increase.get_mean(),
-        interval=increase.get_PI_total_reward(alpha=.05),
+        interval=increase.get_PI(alpha=.05),
         deci=1
     )
-    print("Expected increase earnings and {:.{prec}%} prediction interval:".format(.95, prec=0),
+    print("Expected increase in earnings over 100 games and {:.{prec}%} prediction interval:".format(.95, prec=0),
           estimate_CI)
 
-    # % increase in mean survival time
+    # % increase in mean
     relative_diff = Stat.RelativeDifferenceIndp(
         name='% increase in earnings',
-        x=multi_cohort_odds2.get_mean_total_reward(),
-        y_ref=multi_cohort_odds1.get_mean_total_reward()
+        x=multi_cohort_odds2.get_all_total_rewards(),
+        y_ref=multi_cohort_odds1.get_all_total_rewards()
     )
-    # estimate and prediction interval
+     #estimate and prediction interval
     estimate_CI = Format.format_estimate_interval(
         estimate=relative_diff.get_mean(),
         interval=relative_diff.get_PI(alpha=.05),
@@ -56,3 +56,4 @@ def print_comparative_outcomes(multi_cohort_odds1, multi_cohort_odds2):
     )
     print("Expected percentage increase in earnings and {:.{prec}%} confidence interval:".format(.95, prec=0),
           estimate_CI)
+

@@ -24,6 +24,6 @@ fairsim = fair.simulation()
 weightedsim = weighted.simulation()
 
 print("Problem 2")
-Support.print_outcomes(fair, "The coin is fair.")
-Support.print_outcomes(weighted, "The coin is weighted.")
+Support.print_outcomes(fair, "when the coin is fair.")
+Support.print_outcomes(weighted, " when the coin is weighted.")
 Support.print_comparative_outcomes(fair, weighted)

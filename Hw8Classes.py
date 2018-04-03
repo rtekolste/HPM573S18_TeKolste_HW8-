@@ -148,3 +148,4 @@ class MultipleGameSets:
     # get all total rewards
     def get_all_total_rewards(self):
         return self._totalRewards
+
